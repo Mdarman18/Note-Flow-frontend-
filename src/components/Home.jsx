@@ -19,6 +19,7 @@ const Home = () => {
   const [isSearch, setIsSearch] = useState(false);
   /* ================= STATES ================= */
   const [allNotes, setAllNotes] = useState([]);
+  console.log(allNotes);
 
   const [openEditModel, setOpenEditModel] = useState({
     isShown: false,
@@ -30,6 +31,9 @@ const Home = () => {
     try {
       const result = await NoteBaseUrl.get("/all", {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${result.data.token}`,
+        },
       });
 
       if (!result.data.success) {
