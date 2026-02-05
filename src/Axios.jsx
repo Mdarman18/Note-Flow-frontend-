@@ -6,7 +6,7 @@ export const BaseUrl = axios.create({
 });
 
 export const NoteBaseUrl = axios.create({
-  baseURL: "http://localhost:8000/api/note",
+  baseURL: "https://note-flow-backend-3.onrender.com/api/note",
   withCredentials: true,
 });
 
