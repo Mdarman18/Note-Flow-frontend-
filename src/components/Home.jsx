@@ -70,7 +70,12 @@ const Home = () => {
       const result = await NoteBaseUrl.post(
         `/delete/${id}`,
         {},
-        { withCredentials: true },
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${result.data.token}`,
+          },
+        },
       );
 
       if (!result.data.success) {
@@ -97,6 +102,9 @@ const Home = () => {
         },
         {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${result.data.token}`,
+          },
         },
       );
       if (!result.data.success) {
@@ -119,6 +127,9 @@ const Home = () => {
       const result = await NoteBaseUrl.get("/find", {
         params: { query: id },
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${result.data.token}`,
+        },
       });
 
       if (!result.data.success) {

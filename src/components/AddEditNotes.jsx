@@ -20,7 +20,12 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
       const result = await NoteBaseUrl.post(
         `/edit/${id}`,
         { title, content, tags },
-        { withCredentials: true },
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${result.data.token}`,
+          },
+        },
       );
 
       if (!result.data.success) {
@@ -54,7 +59,12 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
       const res = await NoteBaseUrl.post(
         "/add",
         { title, content, tags },
-        { withCredentials: true },
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${res.data.token}`,
+          },
+        },
       );
 
       if (!res.data.success) {
