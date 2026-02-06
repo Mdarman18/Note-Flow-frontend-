@@ -67,7 +67,7 @@ export default function SignUp() {
       dispatch(signInSuccess(result.data.user));
       toast.success(result.data.message);
 
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       toast.error(error.response.data.message);
     }
