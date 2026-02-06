@@ -67,9 +67,7 @@ export default function SignUp() {
       dispatch(signInSuccess(result.data.user));
       toast.success(result.data.message);
 
-      setTimeout(() => {
-        navigate("/login");
-      }, 1500);
+      navigate("/");
     } catch (error) {
       toast.error(error.response.data.message);
     }

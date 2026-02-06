@@ -3,6 +3,7 @@ import React from "react";
 
 const initialState = {
   currentUser: null,
+  token: null,
   errorDisptach: null,
   loading: false,
 };
@@ -15,13 +16,16 @@ const userSlice = createSlice({
       state.loading = true;
     },
     signInSuccess: (state, action) => {
-      state.currentUser = action.payload;
+      state.currentUser = action.payload.user;
+      state.token = action.payload.token;
       state.loading = false;
       state.errorDisptach = null;
+      localStorage.setItem("token", action.payload.token);
     },
     signInFailure: (state, action) => {
       state.errorDisptach = action.payload;
       state.loading = false;
+      state.token = null;
     },
     signOutstarts: (state) => {
       state.loading = true;
@@ -30,8 +34,11 @@ const userSlice = createSlice({
       state.currentUser = null;
       state.loading = false;
       state.errorDisptach = null;
+      localStorage.removeItem("token");
     },
     signOutFailure: (state, action) => {
+      state.currentUser = null;
+      state.token = null;
       state.errorDisptach = action.payload;
       state.loading = false;
     },

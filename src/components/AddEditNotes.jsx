@@ -22,9 +22,6 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
         { title, content, tags },
         {
           withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${result.data.token}`,
-          },
         },
       );
 
@@ -61,9 +58,6 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
         { title, content, tags },
         {
           withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${res.data.token}`,
-          },
         },
       );
 
